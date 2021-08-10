@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="250dp"
+    android:id="@+id/layout">
+    <ImageView
+        android:id="@+id/dog_breed"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <TextView
+        android:id="@+id/breed_names"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_alignBottom="@+id/dog_breed"
+        android:background="#1976D2"
+        android:fontFamily="serif-monospace"
+        android:gravity="center"
+        android:text="Name"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp" />
+        
+
+</RelativeLayout>
