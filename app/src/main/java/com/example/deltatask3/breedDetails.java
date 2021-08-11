@@ -7,12 +7,14 @@ import android.view.View;
 import android.widget.TextView;
 
 public class breedDetails extends AppCompatActivity {
+    private TextView DogName;
     private TextView life_span;
     private TextView breed_group;
     private TextView bred_for;
     private TextView height;
     private TextView temperament;
     private TextView weight;
+    private String dogname1;
     private String life_span1;
     private String group1;
     private String for1;
@@ -22,12 +24,15 @@ public class breedDetails extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_breed_details);
+        DogName= findViewById(R.id.detailname);
         life_span = findViewById(R.id.life_span);
         breed_group = findViewById(R.id.bred_group);
         bred_for=findViewById(R.id.bred_for);
         height=findViewById(R.id.height);
         temperament=findViewById(R.id.temperament);
         weight=findViewById(R.id.weight);
+        getdogName();
+        getnameAgain();
         getLifeSpan();
         getLifeAgain();
         getBreedGroup();
@@ -37,6 +42,18 @@ public class breedDetails extends AppCompatActivity {
         getTemp();
         getTempAgain();
     }
+
+    private void getdogName(){
+        if(getIntent().hasExtra("DogName: ")){
+            dogname1=getIntent().getStringExtra("DogName: ");
+        }else{
+
+        }
+    }
+    private void getnameAgain(){
+        DogName.setText(dogname1);
+    }
+
     private void getLifeSpan(){
         if(getIntent().hasExtra("Life: ")){
             life_span1=getIntent().getStringExtra("Life: ");

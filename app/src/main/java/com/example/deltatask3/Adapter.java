@@ -18,7 +18,6 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-import static android.view.View.*;
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     private Context context;
@@ -42,13 +41,15 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
         infoClass infoClass = userList.get(position);
+        String url =infoClass.getImageUrl();
 
         holder.name.setText(infoClass.getTextview());
+        Picasso.with(context).load(url).fit().centerInside().into(holder.imageView);
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity.getApplicationContext(),breedDetails.class);
-
+                intent.putExtra("DogName: ",infoClass.getTextview());
                 intent.putExtra("Temp: ",infoClass.getTemperament());
                 intent.putExtra("Bred_for: ",infoClass.getBred_for());
                 intent.putExtra("Group: ",infoClass.getBreed_group());
@@ -65,14 +66,14 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
-        private ImageView url;
+        private ImageView imageView;
         private TextView name;
         private RelativeLayout relativeLayout;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            url = itemView.findViewById(R.id.dog_breed);
+            imageView = itemView.findViewById(R.id.dog_breed);
             name = itemView.findViewById(R.id.breed_names);
             relativeLayout = itemView.findViewById(R.id.layout);
 
