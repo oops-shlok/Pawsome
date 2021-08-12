@@ -11,7 +11,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.view.menu.MenuView;
+
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -20,16 +20,15 @@ import java.util.List;
 
 
 public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
-    private Context context;
+
     private List<infoClass> userList;
     private Activity activity;
 
+
     public Adapter(Activity activity, List<infoClass> userList){
         this.activity= activity;
-        this.context = context;
         this.userList=userList;
     }
-
 
     @NonNull
     @Override
@@ -41,19 +40,23 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull Adapter.ViewHolder holder, int position) {
         infoClass infoClass = userList.get(position);
-        String url =infoClass.getImageUrl();
+        String url =infoClass.getImage().getUrl();
 
         holder.name.setText(infoClass.getTextview());
-        Picasso.with(context).load(url).fit().centerInside().into(holder.imageView);
+        Picasso.with(activity).load(url).fit().centerInside().into(holder.imageView);
         holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity.getApplicationContext(),breedDetails.class);
+
                 intent.putExtra("DogName: ",infoClass.getTextview());
                 intent.putExtra("Temp: ",infoClass.getTemperament());
                 intent.putExtra("Bred_for: ",infoClass.getBred_for());
                 intent.putExtra("Group: ",infoClass.getBreed_group());
+                intent.putExtra("Height: ",infoClass.getHeight().getMetric());
+                intent.putExtra("Weight: ",infoClass.getWeight().getMetric());
                 intent.putExtra("Life: ",infoClass.getLife_span());
+                intent.putExtra("Image: ",infoClass.getImage().getUrl());
                 activity.startActivity(intent);
             }
         });

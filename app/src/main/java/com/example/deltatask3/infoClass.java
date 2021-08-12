@@ -1,39 +1,43 @@
 package com.example.deltatask3;
 
 public class infoClass {
-    private String imageurl;
-    private String name;
-    private String bred_for;
-    private String temperament;
-    private String metric;
-    private String life_span;
-    private String breed_group;
+    public Image image;
+    public Height height;
+    public Weight weight;
+    private String url,name,bred_for,breed_group,temperament,life_span,metric;
 
 
-
-
-
-    infoClass(String imageurl, String name, String bred_for, String temperament, String life_span, String breed_group){
-        this.imageurl = imageurl;
+    infoClass(Image image, Height height, Weight weight, String url, String name, String bred_for, String temperament, String life_span, String breed_group, String metric){
+        this.image=image;
+        this.height=height;
+        this.weight=weight;
+        this.url = url;
         this.name=name;
         this.bred_for = bred_for;
         this.temperament = temperament;
         this.life_span = life_span;
         this.breed_group = breed_group;
-
+        this.metric = metric;
     }
 
-    public void setImageurlUrl(String url){
-        this.imageurl=imageurl;
+    public Image getImage(){
+        return image;
     }
 
+    public Height getHeight(){
+        return height;
+    }
+
+    public Weight getWeight(){
+        return weight;
+    }
 
     public String getTextview() {
         return name;
     }
 
-    public String getImageUrl() {
-        return imageurl;
+    public String getUrl() {
+        return url;
     }
 
     public String getLife_span(){
@@ -53,4 +57,8 @@ public class infoClass {
         return temperament;
     }
 
+
+    public String getMetric() {
+        return metric;
+    }
 }

@@ -3,10 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="250dp"
     android:id="@+id/layout">
+
     <ImageView
         android:id="@+id/dog_breed"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"/>
 
     <TextView
         android:id="@+id/breed_names"

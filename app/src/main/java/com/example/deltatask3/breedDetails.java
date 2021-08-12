@@ -2,9 +2,13 @@ package com.example.deltatask3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.squareup.picasso.Picasso;
 
 public class breedDetails extends AppCompatActivity {
     private TextView DogName;
@@ -13,12 +17,10 @@ public class breedDetails extends AppCompatActivity {
     private TextView bred_for;
     private TextView height;
     private TextView temperament;
+    private ImageView dogImage;
     private TextView weight;
-    private String dogname1;
-    private String life_span1;
-    private String group1;
-    private String for1;
-    private String temperament1;
+    private String dogname1,life_span1,group1,for1,temperament1,url1,height1,weight1;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,7 @@ public class breedDetails extends AppCompatActivity {
         height=findViewById(R.id.height);
         temperament=findViewById(R.id.temperament);
         weight=findViewById(R.id.weight);
+        dogImage = findViewById(R.id.dogImage);
         getdogName();
         getnameAgain();
         getLifeSpan();
@@ -39,8 +42,14 @@ public class breedDetails extends AppCompatActivity {
         getGroupAgain();
         getFor();
         getForAgain();
+        getHeight();
+        getHeightAgain();
+        getWeight();
+        getWeightAgain();
         getTemp();
         getTempAgain();
+        getdogImage();
+        getImageAgain();
     }
 
     private void getdogName(){
@@ -62,7 +71,7 @@ public class breedDetails extends AppCompatActivity {
         }
     }
     private void getLifeAgain(){
-        life_span.setText(life_span1);
+        life_span.setText("Life Span: " + life_span1);
     }
 
     private void getBreedGroup(){
@@ -71,7 +80,7 @@ public class breedDetails extends AppCompatActivity {
         }
     }
     private void getGroupAgain(){
-        breed_group.setText(group1);
+        breed_group.setText("Breed Group: "+group1);
     }
 
     private void getFor(){
@@ -80,7 +89,25 @@ public class breedDetails extends AppCompatActivity {
         }
     }
     private void getForAgain(){
-        bred_for.setText(for1);
+        bred_for.setText("Bred For: "+for1);
+    }
+
+    private void getHeight(){
+        if(getIntent().hasExtra("Height: ")){
+            height1=getIntent().getStringExtra("Height: ");
+        }
+    }
+    private void getHeightAgain(){
+        height.setText("Height: "+height1);
+    }
+
+    private void getWeight(){
+        if(getIntent().hasExtra("Weight: ")){
+            weight1=getIntent().getStringExtra("Weight: ");
+        }
+    }
+    private void getWeightAgain(){
+        weight.setText("Weight: "+weight1+" kgs");
     }
 
     private void getTemp(){
@@ -89,7 +116,16 @@ public class breedDetails extends AppCompatActivity {
         }
     }
     private void getTempAgain(){
-        temperament.setText(temperament1);
+        temperament.setText("Temperament: "+temperament1);
+    }
+
+    private void getdogImage(){
+        if(getIntent().hasExtra("Image: ")){
+            url1=getIntent().getStringExtra("Image: ");
+        }
+    }
+    private void getImageAgain(){
+        Picasso.with(context).load(url1).into(dogImage);
     }
 
 }
