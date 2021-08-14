@@ -1,7 +1,6 @@
 package com.example.deltatask3;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -48,7 +47,6 @@ public class Adapter extends RecyclerView.Adapter<Adapter.ViewHolder> {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(activity.getApplicationContext(),breedDetails.class);
-
                 intent.putExtra("DogName: ",infoClass.getTextview());
                 intent.putExtra("Temp: ",infoClass.getTemperament());
                 intent.putExtra("Bred_for: ",infoClass.getBred_for());
